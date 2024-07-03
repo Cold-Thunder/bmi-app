@@ -59,11 +59,12 @@ class _MyHomePage extends State<MyHomePage>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 20,),
+                  margin: const EdgeInsets.only(bottom: 20,),
+                  padding: const EdgeInsets.only(left: 10, right: 10),
                   height: 300,
                   width: 300,
                   decoration: BoxDecoration(
-                    // color: Colors.blue.shade100,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -83,7 +84,7 @@ class _MyHomePage extends State<MyHomePage>{
                               fontWeight: FontWeight.bold))
                       ),
                       Padding(
-                          padding: EdgeInsets.all(30),
+                          padding: EdgeInsets.all(10),
                           child: Container(
                               height: 50,
                               child: TextField(
@@ -120,7 +121,7 @@ class _MyHomePage extends State<MyHomePage>{
                         height: 5,
                       ),
                       Padding(
-                          padding: EdgeInsets.all(30),
+                          padding: EdgeInsets.all(10),
                           child: Container(
                               height: 50,
                               child: TextField(
@@ -157,7 +158,7 @@ class _MyHomePage extends State<MyHomePage>{
                         height: 5,
                       ),
                       Padding(
-                          padding: EdgeInsets.all(30),
+                          padding: EdgeInsets.all(10),
                           child: Container(
                               height: 50,
                               child: TextField(
