@@ -68,8 +68,8 @@ class _MyHomePage extends State<MyHomePage>{
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        offset: Offset(3,3),
-                        blurRadius: 3,
+                        offset: Offset(1,1),
+                        blurRadius: 5,
                         color: Colors.grey
                       )
                     ]
@@ -196,6 +196,15 @@ class _MyHomePage extends State<MyHomePage>{
                 ),
 
                 Container(
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(1,1),
+                            blurRadius: 5,
+                            color: Colors.grey
+                        )
+                      ]
+                  ),
                   child: ElevatedButton(
                     child: Text('Calculate', style: TextStyle(fontSize: 22, color: Colors.white)),
                     style: ElevatedButton.styleFrom(
@@ -216,14 +225,13 @@ class _MyHomePage extends State<MyHomePage>{
                   decoration: BoxDecoration(
                     color: Colors.purple,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade50,
-                        offset: Offset(2,2),
-                        blurRadius: 5,
-
-                      )
-                    ]
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(1,1),
+                            blurRadius: 5,
+                            color: Colors.grey
+                        )
+                      ]
                   ),
                   child: Text("${result != '' ? result : ''}", style: TextStyle(fontSize: 22, color: Colors.white))
                 ) : Container()
