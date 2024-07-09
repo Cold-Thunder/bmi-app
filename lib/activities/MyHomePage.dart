@@ -11,6 +11,7 @@ class _MyHomePage extends State<MyHomePage>{
   var inCont = TextEditingController();
 
   String result = '';
+  String wet = '';
 
   calculate(){
     var wt = wtCont.text.toString();
@@ -23,6 +24,24 @@ class _MyHomePage extends State<MyHomePage>{
       var totalInc = ((feet*12)+inches)*2.4;
       var metar = (totalInc/100);
       var bmi = weight/(metar*metar);
+
+      if(bmi < 18.5){
+        setState((){
+          wet = 'Have to Increase!';
+        });
+      }else if(bmi >= 18.5 && bmi <= 24.9){
+        setState((){
+          wet = 'Normal Weight!';
+        });
+      }else if(bmi > 24.9 && bmi < 30){
+        setState((){
+          wet = 'Over Weight!';
+        });
+      }else if(bmi > 30){
+        setState((){
+          wet = 'You are over weighted!';
+        });
+      }
 
       setState((){
         result = "Your BMI is : ${bmi.toStringAsFixed(3)}";
@@ -112,7 +131,7 @@ class _MyHomePage extends State<MyHomePage>{
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       hintText: 'Give your weight...',
-                                      hintStyle: TextStyle(fontSize: 22, color: Colors.grey)
+                                      hintStyle: TextStyle(fontSize: 20, color: Colors.grey.shade500)
                                   )
                               )
                           )
@@ -149,7 +168,7 @@ class _MyHomePage extends State<MyHomePage>{
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       hintText: 'Give your height in feet...',
-                                      hintStyle: TextStyle(fontSize: 22, color: Colors.grey)
+                                      hintStyle: TextStyle(fontSize: 20, color: Colors.grey.shade500)
                                   )
                               )
                           )
@@ -186,7 +205,7 @@ class _MyHomePage extends State<MyHomePage>{
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       hintText: 'Give your rest height in inches...',
-                                      hintStyle: TextStyle(fontSize: 22, color: Colors.grey)
+                                      hintStyle: TextStyle(fontSize: 20, color: Colors.grey.shade500)
                                   )
                               )
                           )
@@ -194,14 +213,14 @@ class _MyHomePage extends State<MyHomePage>{
                     ],
                   )
                 ),
-
                 Container(
+                  width: 300,
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                             offset: Offset(1,1),
-                            blurRadius: 5,
-                            color: Colors.grey
+                            blurRadius: 3,
+                            color: Colors.grey,
                         )
                       ]
                   ),
@@ -210,7 +229,7 @@ class _MyHomePage extends State<MyHomePage>{
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)
+                        borderRadius: BorderRadius.circular(10),
                       )
                     ),
                     onPressed: (){
@@ -219,21 +238,36 @@ class _MyHomePage extends State<MyHomePage>{
                   )
                 ),
                 result != '' ? Container(
-                  height: 50,
+                  margin: EdgeInsets.only(top: 20),
+                  height: 100,
                   width: 300,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.purple,
+                    color: Colors.grey.shade500,
                     borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                            offset: Offset(1,1),
-                            blurRadius: 5,
+                            offset: Offset(0,1),
+                            blurRadius: 3,
                             color: Colors.grey
                         )
                       ]
                   ),
-                  child: Text("${result != '' ? result : ''}", style: TextStyle(fontSize: 22, color: Colors.white))
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child:  Text("${wet != '' ? wet : ''}",
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                      Text("${result != '' ? result : ''}", style: TextStyle(fontSize: 22, color: Colors.white))
+
+                    ]
+                  )
                 ) : Container()
               ]
             )
