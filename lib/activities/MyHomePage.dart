@@ -54,6 +54,8 @@ class _MyHomePage extends State<MyHomePage>{
         result = 'Please give all values';
       });
     }
+
+    FocusScope.of(context).unfocus();
   }
 
   @override
